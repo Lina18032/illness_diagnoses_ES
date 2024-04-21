@@ -1,0 +1,3 @@
+[console_scripts]
+aima=aima.main:main
+

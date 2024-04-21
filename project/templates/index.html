@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .scrolling-checkboxes-container {
+            max-height: 200px; /* Adjust as needed */
+            overflow-y: auto;
+            border: 1px solid #ccc; /* Optional: add border for styling */
+            padding: 4px; /* Optional: add padding for spacing */
+            border-radius: 4px; /* Optional: add border radius for rounded corners */
+        }
+        
+    </style>
+</head>
+
+
+<body class="bg-white">
+    <header class="bg-blue-600 py-4">
+        <h1 class="text-4xl font-bold text-white text-center">Expert System</h1>
+    </header>
+    <main class="container mx-auto py-8">
+        <div class="max-w-3xl mx-auto bg-blue-100 p-8 rounded shadow">
+            <h2 class="text-2xl font-bold mb-4 text-center">Welcome to the Expert System</h2>
+            <p class="text-lg text-gray-700 text-center">This is where you can input symptoms to get possible diagnoses.</p>
+        </div>
+    </main>
+    <div class="container mx-auto py-4 flex justify-between">
+        <div class="w-1/2 bg-blue-100 p-4 rounded shadow flex flex-col items-center h-96">
+            <h3 class="text-2xl font-bold mb-2">Select Your Symptoms</h3>
+            <p class="text-lg text-gray-700 mb-4 text-center">if you have felt any abnormal symptoms, that could help us know your probable illnesses, please select them in the section below.</p>
+            <form id="symptomsForm" method="POST">
+                <div class="scrolling-checkboxes-container" class="w-80 h-32 px-4 rounded border-gray-300 focus:outline-none focus:border-blue-500">
+                    <input type="checkbox" id="FeverCheckbox" value="Fever">
+                    <label for="FeverCheckbox">Fever</label><br>
+                    <input type="checkbox" id="CoughCheckbox" value="Cough">
+                    <label for="CoughCheckbox">Cough</label><br>
+                    <input type="checkbox" id="HeadacheCheckbox" value="Headache">
+                    <label for="HeadacheCheckbox">Headache</label><br>
+                    <input type="checkbox" id="SoreThroatCheckbox" value="SoreThroat">
+                    <label for="SoreThroatCheckbox">Sore Throat</label><br>
+                    <input type="checkbox" id="BodyAcheCheckbox" value="BodyAches">
+                    <label for="BodyAcheCheckbox">Body Ache</label><br>
+                    <input type="checkbox" id="RunnyNoseCheckbox" value="RunnyNose">
+                    <label for="RunnyNoseCheckbox">RunnyNose</label><br>
+                    <input type="checkbox" id="FatigueCheckbox" value="Fatigue">
+                    <label for="FatigueCheckbox">Fatigue</label><br>
+                    <input type="checkbox" id="LightSensitivityCheckbox" value="LightSensitivity">
+                    <label for="LightSensitivityCheckbox">Light Sensitivity</label><br>
+                    <input type="checkbox" id="FacialPainCheckbox" value="FacialPain">
+                    <label for="FacialPainCheckbox">Facial Pain</label><br>
+                    <input type="checkbox" id="CongestionCheckbox" value="Congestion">
+                    <label for="CongestionCheckbox">Congestion</label><br>
+                    <input type="checkbox" id="RashCheckbox" value="Rash">
+                    <label for="RashCheckbox">Rash</label><br>
+                    <input type="checkbox" id="AbdominalPainCheckbox" value="AbdominalPain">
+                    <label for="AbdominalPainCheckbox">Abdominal Pain</label><br>
+                    <input type="checkbox" id="VomitingCheckbox" value="Vomiting">
+                    <label for="VomitingCheckbox">Vomiting</label><br>
+                    <input type="checkbox" id="DiarrheaCheckbox" value="Diarrhea">
+                    <label for="DiarrheaCheckbox">Diarrhea</label><br>
+                    <input type="checkbox" id="ChestPainCheckbox" value="ChestPain">
+                    <label for="ChestPainCheckbox">Chest Pain</label><br>
+                    <input type="checkbox" id="ShortnessOfBreathCheckbox" value="ShortnessOfBreath">
+                    <label for="ShortnessOfBreathCheckbox">Shortness of Breath</label><br>
+                    <input type="checkbox" id="JointPainCheckbox" value="JointPain">
+                    <label for="JointPainCheckbox">Joint Pain</label><br>
+                    <input type="checkbox" id="SwellingCheckbox" value="Swelling">
+                    <label for="SwellingCheckbox">Swelling</label><br>
+                    <input type="checkbox" id="DifficultySwallowingCheckbox" value="DifficultySwallowing">
+                    <label for="DifficultySwallowingCheckbox">Difficulty Swallowing</label><br>
+                    <input type="checkbox" id="DizzinessCheckbox" value="Dizziness">
+                    <label for="DizzinessCheckbox">Dizziness</label><br>
+                    <input type="checkbox" id="NauseaCheckbox" value="Nausea">
+                    <label for="NauseaCheckbox">Nausea</label><br>
+                    <input type="checkbox" id="SneezingCheckbox" value="Sneezing">
+                    <label for="SneezingCheckbox">Sneezing</label><br>
+                    <input type="checkbox" id="SneezingCheckbox" value="MuscleAches">
+                    <label for="SneezingCheckbox">Muscle Aches</label><br>
+                    <input type="checkbox" id="SneezingCheckbox" value="LossOfTaste">
+                    <label for="SneezingCheckbox">Loss Of Taste</label><br>
+                    
+
+                </div>
+                
+                <button type="submit" class="mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Submit</button>
+            </form>
+        </div>
+        <div id="diseasesDiv" class="w-1/2 bg-blue-100 p-4 rounded shadow h-96 ml-4 flex flex-col justify-center">
+            <h3 class="text-2xl font-bold text-center mb-4">Probable Diseases</h3>
+            <div id="diseasesList" class="bg-white border border-white rounded p-4 w-2/3 mx-auto">
+            </div>
+        </div>
+    </div>
+    <footer class="bg-gray-900 py-6 text-white text-center">
+        <p>&copy; 2024 Expert System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            const selectedSymptoms = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(checkbox => checkbox.value);
+            const response = await fetch('http://localhost:5000/diagnose', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    symptoms: selectedSymptoms
+                })
+            });
+            const data = await response.json();
+            const diseasesList = document.getElementById('diseasesList');
+            diseasesList.innerHTML = '';
+            if (data) {
+                data.forEach(disease => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${disease.disease} (Certainty: ${disease.certainty})`;
+                    diseasesList.appendChild(listItem);
+                });
+            } else {
+                const listItem = document.createElement('li');
+                listItem.textContent = 'No potential diseases inferred based on the provided symptoms.';
+                diseasesList.appendChild(listItem);
+            }
+        }
+    
+        document.getElementById('symptomsForm').addEventListener('submit', handleFormSubmit);
+    </script>
+    
+    
+</body>
+
+</html>
