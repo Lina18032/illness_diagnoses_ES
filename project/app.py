@@ -38,7 +38,7 @@ def calculate_certainty(symptoms, total_symptoms):
 @app.route('/')
 def index():
     return render_template('index.html')
-
+#memory and agenda
 @app.route('/diagnose', methods=['POST'])
 def diagnose():
     selected_symptoms = request.json.get('symptoms', [])
